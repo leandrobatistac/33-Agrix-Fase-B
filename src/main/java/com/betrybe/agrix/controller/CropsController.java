@@ -38,6 +38,8 @@ public class CropsController {
                     crop.getId(),
                     crop.getName(),
                     crop.getPlantedArea(),
+                    crop.getPlantedDate(),
+                    crop.getHarvestDate(),
                     crop.getFarm().getId())));
   }
 

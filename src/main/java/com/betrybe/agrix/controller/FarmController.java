@@ -88,6 +88,8 @@ public class FarmController {
                       crop.getId(),
                       crop.getName(),
                       crop.getPlantedArea(),
+                      crop.getPlantedDate(),
+                      crop.getHarvestDate(),
                       crop.getFarm().getId())));
     } else {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fazenda não encontrada!");
