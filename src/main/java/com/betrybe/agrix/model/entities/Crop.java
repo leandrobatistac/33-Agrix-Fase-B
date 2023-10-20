@@ -36,15 +36,15 @@ public class Crop {
           Long id,
           String name,
           Double plantedArea,
-          LocalDate harvestDate,
           LocalDate plantedDate,
+          LocalDate harvestDate,
           Long farm
   ) {
     this.id = id;
     this.name = name;
     this.plantedArea = plantedArea;
-    this.harvestDate = harvestDate;
     this.plantedDate = plantedDate;
+    this.harvestDate = harvestDate;
   }
 
   public Crop() {
