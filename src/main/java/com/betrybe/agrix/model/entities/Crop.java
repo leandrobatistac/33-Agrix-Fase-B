@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 
 /**
  * Javadoc.
@@ -96,5 +97,9 @@ public class Crop {
 
   public void setFarm(Farm farm) {
     this.farm = farm;
+  }
+
+  public ChronoLocalDate getHarverstDate() {
+    return harvestDate;
   }
 }

@@ -3,6 +3,7 @@ package com.betrybe.agrix.service;
 import com.betrybe.agrix.model.entities.Crop;
 import com.betrybe.agrix.model.entities.Farm;
 import com.betrybe.agrix.model.repositories.CropRepository;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,17 @@ public class CropService {
 
   public Optional<Crop> getCropById(Long id) {
     return cropRepository.findById(id);
+  }
+
+  /**
+   * Javadoc.
+   */
+  public List<Crop> searchCrops(LocalDate startDate, LocalDate endDate) {
+    List<Crop> allCrops = this.cropRepository.findAll();
+    List<Crop> searchedCrops = allCrops.stream()
+            .filter(crop ->  endDate.isAfter(crop.getHarverstDate())
+                    && startDate.isBefore(crop.getHarverstDate()))
+            .toList();
+    return searchedCrops;
   }
 }
