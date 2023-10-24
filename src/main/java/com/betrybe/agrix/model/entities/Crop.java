@@ -6,17 +6,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
+import java.util.List;
 
 /**
  * Javadoc.
  */
 
 @Entity
-@Table(name = "crops")
+@Table(name = "crop")
 public class Crop {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +32,11 @@ public class Crop {
   private Farm farm;
   private LocalDate plantedDate;
   private LocalDate harvestDate;
+  @ManyToMany
+  @JoinTable(name = "crop_fertilizer",
+          joinColumns = @JoinColumn(name = "crop_id"),
+          inverseJoinColumns = @JoinColumn(name = "fertilizer_id"))
+  List<Fertilizer> fertilizers;
 
   /**
    * Javadoc.
