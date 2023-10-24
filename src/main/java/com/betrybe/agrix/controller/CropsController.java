@@ -115,7 +115,7 @@ public class CropsController {
     if (cropById.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(cropById.get().getFertilizers());
     } else {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fazenda não encontrada!");
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plantação não encontrada!");
     }
 
   }
