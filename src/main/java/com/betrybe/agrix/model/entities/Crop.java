@@ -110,4 +110,8 @@ public class Crop {
   public ChronoLocalDate getHarverstDate() {
     return harvestDate;
   }
+
+  public List<Fertilizer> getFertilizers() {
+    return fertilizers;
+  }
 }

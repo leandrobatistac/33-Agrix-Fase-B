@@ -1,8 +1,11 @@
 package com.betrybe.agrix.service;
 
+import com.betrybe.agrix.dto.CropDto;
 import com.betrybe.agrix.model.entities.Crop;
 import com.betrybe.agrix.model.entities.Farm;
+import com.betrybe.agrix.model.entities.Fertilizer;
 import com.betrybe.agrix.model.repositories.CropRepository;
+import com.betrybe.agrix.model.repositories.FertilizerRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -16,10 +19,12 @@ import org.springframework.stereotype.Service;
 public class CropService {
 
   private final CropRepository cropRepository;
+  private final FertilizerRepository fertilizerRepository;
 
   @Autowired
-  public CropService(CropRepository cropRepository) {
+  public CropService(CropRepository cropRepository, FertilizerRepository fertilizerRepository) {
     this.cropRepository = cropRepository;
+    this.fertilizerRepository = fertilizerRepository;
   }
 
   public Crop create(Crop crop, Farm farm) {
@@ -49,5 +54,18 @@ public class CropService {
                     && startDate.isBefore(crop.getHarverstDate()))
             .toList();
     return searchedCrops;
+  }
+
+  /**
+   * Javadoc.
+   */
+  public void associateFertilizertoCrop(Long cropId, Long fertilizerId) {
+    Optional<Crop> optionalCrop = cropRepository.findById(cropId);
+    Optional<Fertilizer> optionalFertilizer = fertilizerRepository.findById(fertilizerId);
+
+
+    Crop crop = optionalCrop.get();
+    crop.getFertilizers().add(optionalFertilizer.get());
+    cropRepository.save(crop);
   }
 }
