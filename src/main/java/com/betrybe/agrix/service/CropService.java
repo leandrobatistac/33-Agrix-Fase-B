@@ -1,6 +1,5 @@
 package com.betrybe.agrix.service;
 
-import com.betrybe.agrix.dto.CropDto;
 import com.betrybe.agrix.model.entities.Crop;
 import com.betrybe.agrix.model.entities.Farm;
 import com.betrybe.agrix.model.entities.Fertilizer;

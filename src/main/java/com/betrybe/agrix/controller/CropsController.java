@@ -2,6 +2,7 @@ package com.betrybe.agrix.controller;
 
 import com.betrybe.agrix.dto.CropDto;
 import com.betrybe.agrix.dto.FertilizerDto;
+import com.betrybe.agrix.except.NotFoundMsg;
 import com.betrybe.agrix.model.entities.Crop;
 import com.betrybe.agrix.model.entities.Fertilizer;
 import com.betrybe.agrix.service.CropService;
@@ -108,7 +109,14 @@ public class CropsController {
    * Javadoc.
    */
   @GetMapping("/{cropId}/fertilizers")
-  public List<Fertilizer> getCropFertilizers(@PathVariable Long cropId) {
-    return cropService.getCropFertilizers(cropId);
+  public ResponseEntity<?> getCropFertilizers(@PathVariable Long cropId) {
+    Optional<Crop> cropById = cropService.getCropById(cropId);
+
+    if (cropById.isPresent()) {
+      return ResponseEntity.status(HttpStatus.OK).body(cropById.get().getFertilizers());
+    } else {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fazenda não encontrada!");
+    }
+
   }
 }
