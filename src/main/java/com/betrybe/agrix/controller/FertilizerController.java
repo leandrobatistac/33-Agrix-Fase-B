@@ -62,7 +62,7 @@ public class FertilizerController {
       return ResponseEntity.status(HttpStatus.OK)
           .body(FertilizerDto.convertToFertilizerDto(fertilizerById.get()));
     } else {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plantação não encontrada!");
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fertilizante não encontrado!");
     }
   }
 }
