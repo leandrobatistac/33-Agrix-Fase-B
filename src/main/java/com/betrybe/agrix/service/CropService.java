@@ -68,4 +68,13 @@ public class CropService {
     crop.getFertilizers().add(optionalFertilizer.get());
     cropRepository.save(crop);
   }
+
+  /**
+   * Javadoc.
+   */
+  public List<Fertilizer> getCropFertilizers(Long cropId) {
+    Optional<Crop> optionalCrop = cropRepository.findById(cropId);
+    Crop crop = optionalCrop.get();
+    return crop.getFertilizers();
+  }
 }
