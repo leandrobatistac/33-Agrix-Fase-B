@@ -42,4 +42,8 @@ public class Farm {
   public void setSize(Double size) {
     this.size = size;
   }
+
+  public Long getId() {
+    return id;
+  }
 }
